@@ -1,20 +1,22 @@
-name: Self-hosted GitHub Actions Demo
+name: GitHub Actions Demo
 on:
   workflow_dispatch:
 
 jobs:
-  Build:
+ Build:
     # You need to use the INSTALLATION_NAME from the previous step
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 This job uses runner scale set runners!"
       - name: Check out the repo
         uses: actions/checkout@v2
       - run: ls -l
+      - run: which sbt
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
           cache: 'sbt'
+      - run: which sbt
       - run: sbt run
