@@ -10,11 +10,12 @@ jobs:
       - run: echo "🎉 This job uses runner scale set runners!"
       - name: Check out the repo
         uses: actions/checkout@v2
-      - run: ls -l
+      - run: ls /usr/bin
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
           cache: 'sbt'
+      - run: ls /usr/bin
       - run: sbt run
